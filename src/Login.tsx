@@ -45,7 +45,7 @@ export class Login extends Component
     setName(e: string){
         if (this.state.register) {
             if (e === "JRMP4U" || e === "jrmp4u") {
-                this.setState({ email: e, displayName: "Marcell" });
+                this.setState({ ...this.state, email: e, displayName: "Marcell" });
             }
         }
         this.setState({ email: e });
