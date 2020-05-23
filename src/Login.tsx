@@ -18,8 +18,8 @@ export class Login extends Component
         </button>
 
         { this.state.register &&
-            <input type="text" placeholder="Display Name (Agent Smith)" value={ this.state.displayName }
-            onChange={ e => this.setState( { displayName: e.target.value } ) } /> 
+            <TextInput type="text" placeholder="Display Name (Agent Smith)" value={ this.state.displayName }
+            onChange={ e => this.setState( { displayName: e } ) } /> 
         }
 
         <p>{this.state.register ? "Switch back to " : "Have no account yet? Go and "}
