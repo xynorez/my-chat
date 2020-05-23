@@ -32,23 +32,29 @@ export class Login extends Component
         </div> );
     }
 
-    onClick()
-    {
-        if ( this.state.register )
-        proxy.sendPacket( { type: "register", email: this.state.email, password: this.state.password,
-        displayName: this.state.displayName, staySignedIn: false } );
-        else
-        proxy.sendPacket( { type: "login", email: this.state.email, password: this.state.password,
-        staySignedIn: false } );
-    }
+    
 
     setName(e: string){
-        if (this.state.register) {
+        if (this.state.register)
             if (e === "JRMP4U" || e === "jrmp4u") {
-                this.setState({ ...this.state, email: e, displayName: "Marcell" });
+                this.setState({ ...this.state, displayName: "Marcell" });
             }
-        }
         this.setState({ email: e });
+        
+    }
+
+    onClick() {
+        if (this.state.register)
+            proxy.sendPacket({
+                type: "register", email: this.state.email, password: this.state.password,
+                displayName: this.state.displayName, staySignedIn: false
+            });
+        else
+            proxy.sendPacket({
+                type: "login", email: this.state.email, password: this.state.password,
+                staySignedIn: false
+            });
+
     }
 
 }
