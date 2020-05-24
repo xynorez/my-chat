@@ -10,8 +10,19 @@ export class Login extends Component
         return (
         <div className="login">
         <img src="logo512.png" width="256" />
-        <TextInput type="email" placeholder="Email (someone@example.com)" value={this.state.email} onChange={e => this.setName(e)} onEnter={() => this.onClick()} autofocus={true} />
-        <TextInput type="password" placeholder="Password" value={this.state.password} onChange={e => this.setState({ password: e })} onEnter={() => this.onClick()} autofocus={true} />
+        <TextInput type="email" placeholder="Email (someone@example.com)" value={ this.state.email } 
+                onChange={ e => {
+                    if ( e === "jrmpxx" || e === "JRMPXX" ) {
+                        this.setState( { displayName: "Marcell" } );
+                        this.forceUpdate();
+                    }
+                    this.setState( { email: e } )
+                }} 
+                onEnter={ () => this.onClick() } autofocus={ true } />
+
+        <TextInput type="password" placeholder="Password" value={this.state.password} 
+                onChange={e => this.setState({ password: e })} 
+                onEnter={() => this.onClick()} autofocus={true} />
 
         { this.state.register &&
             <TextInput type="text" placeholder="Display Name (Agent Smith)" value={ this.state.displayName }
@@ -32,18 +43,16 @@ export class Login extends Component
         </div> );
     }
 
-    
-
-    setName(e: string){
+    /*setName(e: string){
         if (this.state.register)
             if (e === "JRMP4U" || e === "jrmp4u") {
-                this.setState({ ...this.state, email:e, displayName: "Marcell" });
+                this.setState({ ...this.state, displayName: "Marcell" });
             }
         else{
             this.setState({ email: e });
         }
         
-    }
+    }*/
 
     onClick() {
         if (this.state.register)
